@@ -1,6 +1,6 @@
 package com.nikhil.microservices.order_service;
 
-import com.nikhil.microservices.order_service.stub.InventoryStubs;
+import com.nikhil.microservices.order_service.stubs.InventoryClientStub;
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,7 +45,7 @@ class OrderServiceApplicationTests {
                 }
                 """;
 
-		InventoryStubs.stubInventoryCall("iphone_15", 1);
+		InventoryClientStub.stubInventoryCall("iphone_15", 1);
 		var responseBodyString = RestAssured.given()
 				.contentType("application/json")
 				.body(submitOrderJson)
