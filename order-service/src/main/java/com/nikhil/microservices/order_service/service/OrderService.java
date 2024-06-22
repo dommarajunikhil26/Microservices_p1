@@ -16,9 +16,10 @@ public class OrderService {
     private final InventoryClient inventoryClient;
 
     public void placeOrder(OrderRequest orderRequest){
-        var isProductInStock = inventoryClient.IsInStock(orderRequest.skuCode(), orderRequest.quantity());
-        // map request to order object
+        var isProductInStock = inventoryClient.isInStock(orderRequest.skuCode(), orderRequest.quantity());
+
         if(isProductInStock) {
+            // map request to order object
             Order order = new Order();
             order.setOrderNumber(UUID.randomUUID().toString());
             order.setPrice(orderRequest.price());
